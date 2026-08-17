@@ -5,4 +5,5 @@ public class Perro {
     double peso;
     boolean tiene_vacuna;
 
+
 }
