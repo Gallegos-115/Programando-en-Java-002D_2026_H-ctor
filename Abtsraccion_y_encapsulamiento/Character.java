@@ -1,11 +1,16 @@
 package Abtsraccion_y_encapsulamiento;
 
 public class Character {
-    private String Name;
-    private int hit_points;
-    private int magic_point;
-    boolean it_ally;
-    private int Age;
+    protected String Name;
+    protected int hit_points;
+    protected int magic_point;
+    protected boolean it_ally;
+    protected int Age;
+
+
+    public void atacar(){
+        System.out.println("ATACANDO...");
+    }
 
     public Character(String Name){
         setName(Name);
