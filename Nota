@@ -1,0 +1,6 @@
+Un array list, es una estructura de datos dinamica, esto quiere decir que puede almacenar elementos de manera más flexible
+permitiendo crecer o disminuir su tamaño (No tiene un tamaño fijo).
+
+un array es una manera mucho más facil a la hora querer sacar algun dato, ya que estos datos se encuentran almacenados de manera
+más secuencial en memoria mediante un indice, estos tienen un tamaño fijo a diferencia de una ArrayList.
+
