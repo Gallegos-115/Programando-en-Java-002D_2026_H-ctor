@@ -2,15 +2,14 @@ public abstract class Vehiculo {
     private String Patente;
     private String Marca;
     private String Modelo;
-    private int Año;
-    private double Costo_Base;
-    
-    Vehiculo(String patente, String marca, String modelo, int año, double costo_base){
+    private double PrecioBase;
+    protected boolean EnServicio;
+
+    Vehiculo(String patente, String marca, String modelo, double preciobase){
         this.Patente = patente;
         this.Marca = marca;
         this.Modelo = modelo;
-        this.Año = año;
-        this.Costo_Base = costo_base;
+        this.PrecioBase = preciobase;
     }
 
     public String getPatente(){
@@ -18,8 +17,8 @@ public abstract class Vehiculo {
     }
 
     public void setPatente(String patente){
-        if(patente.isEmpty()){
-            System.out.println("Error: Patente vacía.");
+        if(Patente == null || Patente.isBlank()){
+            throw new IllegalArgumentException("Error: Ingrese una patente valida.");
         }else{
             this.Patente = patente;
         }
@@ -27,57 +26,48 @@ public abstract class Vehiculo {
 
     public String getMarca(){
         return this.Marca;
-    }
+    } 
 
     public void setMarca(String marca){
-        if(Marca.isEmpty()){
-            System.out.println("Error: Patente vacía.");
+        if(Marca == null || Marca.isBlank()){
+            throw new IllegalArgumentException("Error: Ingrese una Marca valida.");
         }else{
             this.Marca = marca;
         }
     }
 
-
     public String getModelo(){
         return this.Modelo;
     }
 
+
     public void setModelo(String modelo){
-        if(modelo.isEmpty()){
-            System.out.println("Error: Modelo vacío.");
+        if(Modelo == null || Modelo.isBlank()){
+            throw new IllegalArgumentException("Error: Ingrese un Modelo valido.");
         }else{
             this.Modelo = modelo;
         }
     }
 
-    public int getAño(){
-        return this.Año;
+    public double getPrecioBase(){
+        return this.PrecioBase;
     }
 
-    public void setAño(int años){
-        if(Año < 0){
-            System.out.println("Error: Dígitos negativos.");
+    public void setPreciobase(double preciobase){
+        if(PrecioBase < 0){
+            throw new IllegalArgumentException("Error: Ingrese un entero positivo.");
         }else{
-            this.Año = años;
-        }
-    } 
-
-    public double getCosto_Base(){
-        return this.Costo_Base;
-    }
-
-    public void setCosto_base(double costo_base){
-        if(Costo_Base < 0){
-            System.out.println("Error: Digítos negativos");
-        }else{
-            this.Costo_Base = costo_base;
+            this.PrecioBase = preciobase;
         }
     }
 
-    public abstract int CalcularPrecio();
-
-    public String MostrarInformacion(){
-        return "La patente es: " + this.Patente + "| " + " Modelo : " + this.Modelo + "| " + " Marca" + this.Marca + "| " + "Año " + this.Año + "| Precio Base: " + this.Costo_Base;        
+    public boolean getIsEnServicio(boolean EnServicio){
+        return this.EnServicio;
     }
-    
+
+    public abstract double CalcularPrecioAlquiler();
+
+    public String MostrarDetalles(){
+        return "Patente: " + this.Patente + " | " + "Marca: " + this.Marca + " | " + "Modelo: " + this.Modelo + " | " + "Precio: " + this.PrecioBase + " | " + "Disponible: " + this.EnServicio;
+    }
 }
